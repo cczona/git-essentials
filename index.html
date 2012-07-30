@@ -5,45 +5,21 @@ layout: reference
   <h2>How to Think Like Git</h2>
   <div class="block">
     <p>
-    Let's start from scratch.  Assume you are designing a new source 
-    code management system.  How did you do basic version control before
+    How did you do basic version control before
     you used a tool for it?  Chances are that you simply copied your 
-    project directory to save what it looked like at that point.
-    </p>
-
-    <p>
-    That way, you can easily revert files that get messed up later, or 
-    see what you have changed by comparing what the project looks like
-    now to what it looked like when you copied it.
-    </p>
-
-    <p>
-    If you are really paranoid, you may do this often, maybe putting the
+    project directory to save what it looked like at that point, maybe putting the
     date in the name of the backup.
-    </p>
-
-    <p>
-    In that case, you may have a bunch of snapshots of your project that 
-    you can compare and inspect from. You can even use this model to 
-    fairly effectively share changes with someone.  
     </p>
 
     <p>
     This is essentially what Git is. You tell Git you want to save a snapshot
     of your project with the <code>git commit</code> command and it basically 
     records a snapshop of what all of the files in your project look like at 
-    that point.  Then most of the commands work with that series of snapshots to see
+    that point in time.  Then most of the commands work with that series of snapshots to see
     how they differ or pull content out of them, etc.  
     </p>
 
     <center><img src="./images/snapshots.png"/></center>
-
-    <p>
-    If you think about Git
-    as a tool for storing and comparing and merging snapshots of your project,
-    it may be easier to understand what is going on and how to do things 
-    properly.
-    </p>
 
   </div>
 </div>
