@@ -114,7 +114,7 @@ $ git branch
 
 <pre>
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 <b>$ echo 'test content' > test.txt</b>
 <b>$ echo 'more content' > more.txt</b>
 <b>$ git add *.txt</b>
@@ -124,11 +124,11 @@ README   hello.rb
  create mode 100644 more.txt
  create mode 100644 test.txt
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 <b>$ git checkout testing</b>
 Switched to branch 'testing'
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 </pre>
 
     <p>So now we can see that when we switch to the 'testing' branch, our new
@@ -137,11 +137,11 @@ README   hello.rb
 
 <pre>
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 <b>$ git checkout master</b>
 Switched to branch 'master'
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 </pre>
 
     <h4>
@@ -162,7 +162,7 @@ README   hello.rb more.txt test.txt
 <b>$ git branch</b>
 * master
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 <b>$ git checkout -b removals</b>
 Switched to a new branch 'removals'
 <b>$ git rm more.txt </b>
@@ -170,7 +170,7 @@ rm 'more.txt'
 <b>$ git rm test.txt </b>
 rm 'test.txt'
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 <b>$ git commit -am 'removed useless files'</b>
 [removals 8f7c949] removed useless files
  2 files changed, 0 insertions(+), 2 deletions(-)
@@ -179,7 +179,7 @@ README   hello.rb
 <b>$ git checkout master</b>
 Switched to branch 'master'
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 </pre>
 
     <p>You can see there how we created a branch, removed some of our files
@@ -249,7 +249,7 @@ Deleted branch testing (was 78b2670).
 * <span class="green">master</span>
   removals
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 <b>$ git merge removals</b>
 Updating 8bd6d8b..8f7c949
 Fast-forward
@@ -259,7 +259,7 @@ Fast-forward
  delete mode 100644 more.txt
  delete mode 100644 test.txt
 <b>$ ls</b>
-<span class="hl">README   hello.rb</span>
+<span class="hl">README   hello.py</span>
 </pre>
 
     <h4>
@@ -276,7 +276,7 @@ Fast-forward
 <pre>
 <b>$ git branch</b>
 * master
-<b>$ cat hello.rb </b>
+<b>$ cat hello.py </b>
 class HelloWorld
   def self.hello
     puts "Hello World"
@@ -292,10 +292,10 @@ HelloWorld.hello
 
 <pre>
 <b>$ git checkout -b change_class</b>
-M hello.rb
+M hello.py
 Switched to a new branch 'change_class'
-<b>$ vim hello.rb </b>
-<b>$ head -1 hello.rb </b>
+<b>$ vim hello.py </b>
+<b>$ head -1 hello.py </b>
 class HiWorld
 <b>$ git commit -am 'changed the class name'</b>
 [change_class 3467b0a] changed the class name
@@ -306,19 +306,19 @@ class HiWorld
       branch.  If I now switch back to the 'master' branch my class name will
       revert to what it was before I switched branches. Here I can change
       something different (in this case the printed output) and at the same
-      time rename the file from <code>hello.rb</code> to <code>ruby.rb</code>.
+      time rename the file from <code>hello.py</code> to <code>ruby.py</code>.
       </b>
 
 <pre>
 <b>$ git checkout master</b>
 Switched to branch 'master'
-<b>$ git mv hello.rb ruby.rb</b>
-<b>$ vim ruby.rb </b>
+<b>$ git mv hello.py ruby.py</b>
+<b>$ vim ruby.py </b>
 <b>$ git diff</b>
-<span class="umber">diff --git a/ruby.rb b/ruby.rb
+<span class="umber">diff --git a/ruby.py b/ruby.py
 index 2aabb6e..bf64b17 100644
---- a/ruby.rb
-+++ b/ruby.rb</span>
+--- a/ruby.py
++++ b/ruby.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
 
@@ -331,7 +331,7 @@ index 2aabb6e..bf64b17 100644
 <b>$ git commit -am 'added from ruby'</b>
 [master b7ae93b] added from ruby
  1 files changed, 1 insertions(+), 1 deletions(-)
- rename hello.rb => ruby.rb (65%)
+ rename hello.py => ruby.py (65%)
 </pre>
 
     <p>Now those changes are recorded in my 'master' branch.  Notice that the
@@ -345,12 +345,12 @@ index 2aabb6e..bf64b17 100644
   change_class
 * master
 <b>$ git merge change_class</b>
-Renaming hello.rb => ruby.rb
-Auto-merging ruby.rb
+Renaming hello.py => ruby.py
+Auto-merging ruby.py
 Merge made by recursive.
- ruby.rb |    6 ++----
+ ruby.py |    6 ++----
  1 files changed, 2 insertions(+), 4 deletions(-)
-<b>$ cat ruby.rb</b>
+<b>$ cat ruby.py</b>
 class HiWorld
   def self.hello
     puts "Hello World from Ruby"
@@ -623,8 +623,8 @@ Switched to a new branch 'erlang'
 <b>$ git checkout master</b>
 Switched to branch 'master'
 <b>$ ls</b>
-README  ruby.rb
-<b>$ vim ruby.rb </b>
+README  ruby.py
+<b>$ vim ruby.py </b>
 <b>$ git commit -am 'reverted to old class name'</b>
 [master 594f90b] reverted to old class name
  1 files changed, 2 insertions(+), 2 deletions(-)

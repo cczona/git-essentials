@@ -46,13 +46,13 @@ layout: zh_reference
 <pre>
 <b>$ git status -s</b>
 <span class="red">??</span> README
-<span class="red">??</span> hello.rb
+<span class="red">??</span> hello.py
 </pre>
 
     我们有俩尚未被追踪的文件，得添加一下。
 
 <pre>
-<b>$ git add README hello.rb</b>
+<b>$ git add README hello.py</b>
 </pre>
     
 	现在我们再执行 <code>git status</code>，就可以看到这俩文件已经加上去了。
@@ -60,11 +60,11 @@ layout: zh_reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">A</span>  README
-<span class="green">A</span>  hello.rb
+<span class="green">A</span>  hello.py
 </pre>
 
     <p class="aside">
-	新项目中，添加所有文件很普遍，可以在当前工作目录执行命令：<code>git add .</code>。因为 Git 会递归地将您执行命令时所在的目录中的所有文件添加上去，所以如果你将当前的工作目录作为参数，它就会追踪那儿的所有文件了。如此，<code>git add .</code> 就和 <code>git add README hello.rb</code> 有一样的效果。此外，效果一致的还有 <code>git add *</code>，不过那只是因为我们这还木有子目录，不需要递归地添加新文件。
+	新项目中，添加所有文件很普遍，可以在当前工作目录执行命令：<code>git add .</code>。因为 Git 会递归地将您执行命令时所在的目录中的所有文件添加上去，所以如果你将当前的工作目录作为参数，它就会追踪那儿的所有文件了。如此，<code>git add .</code> 就和 <code>git add README hello.py</code> 有一样的效果。此外，效果一致的还有 <code>git add *</code>，不过那只是因为我们这还木有子目录，不需要递归地添加新文件。
     </p>
 
 	<p>好了，现在我们改个文件，再跑一下 <code>git status</code>，有点古怪。</p>
@@ -72,7 +72,7 @@ layout: zh_reference
 <b>$ vim README</b>
 <b>$ git status -s</b>
 <span class="green">A</span><span class="red">M</span> README
-<span class="green">A</span>  hello.rb
+<span class="green">A</span>  hello.py
 </pre>
 
 	<p>
@@ -108,7 +108,7 @@ layout: zh_reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">A</span><span class="red">M</span> README
-<span class="green">A</span>  hello.rb
+<span class="green">A</span>  hello.py
 </pre>
 
     而同样的状态，详细的输出看起来是这样的：
@@ -123,7 +123,7 @@ layout: zh_reference
 #   (use "git rm --cached <file>..." to unstage)
 #
 # <span class="green">new file:   README</span>
-# <span class="green">new file:   hello.rb</span>
+# <span class="green">new file:   hello.py</span>
 #
 # Changed but not updated:
 #   (use "git add <file>..." to update what will be committed)
@@ -141,7 +141,7 @@ layout: zh_reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">M</span>  README
- <span class="red">D</span> hello.rb
+ <span class="red">D</span> hello.py
 </pre>
 
 	您可以看到，在简短输出中，有两栏。第一栏是缓存的，第二栏则是工作目录的。所以假设您临时提交了 README 文件，然后又改了些，并且没有执行 <code>git add</code>，您会看到这个：
@@ -149,7 +149,7 @@ layout: zh_reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">M</span><span class="red">M</span> README
- <span class="red">D</span> hello.rb
+ <span class="red">D</span> hello.py
 </pre>
 
     <p class="nutshell">
@@ -182,14 +182,14 @@ layout: zh_reference
     </p>
 
 <pre>
-<b>$ vim hello.rb</b>
+<b>$ vim hello.py</b>
 <b>$ git status -s</b>
- <span class="red">M</span> hello.rb
+ <span class="red">M</span> hello.py
 <b>$ git diff</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index d62ac43..8d15d50 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
    
@@ -209,15 +209,15 @@ index d62ac43..8d15d50 100644
       <small>#查看已缓存的改动</small>
     </h4>
 
-    <p><code>git diff --cached</code> 命令会告诉您有哪些内容已经写入缓存了。也就是说，此命令显示的是接下来要写入快照的内容。所以，如果您将上述示例中的 <code>hello.rb</code> 写入缓存，因为 <code>git diff</code> 显示的是尚未缓存的改动，所以在此执行它不会显示任何信息。
+    <p><code>git diff --cached</code> 命令会告诉您有哪些内容已经写入缓存了。也就是说，此命令显示的是接下来要写入快照的内容。所以，如果您将上述示例中的 <code>hello.py</code> 写入缓存，因为 <code>git diff</code> 显示的是尚未缓存的改动，所以在此执行它不会显示任何信息。
     </p>
 
 <pre>
 <b>$ git status -s</b>
- <span class="red">M</span> hello.rb
-<b>$ git add hello.rb </b>
+ <span class="red">M</span> hello.py
+<b>$ git add hello.py </b>
 <b>$ git status -s</b>
-<span class="green">M</span>  hello.rb
+<span class="green">M</span>  hello.py
 <b>$ git diff</b>
 <b>$ </b>
 </pre>
@@ -227,14 +227,14 @@ index d62ac43..8d15d50 100644
 
 <pre>
 <b>$ git status -s</b>
-<span class="green">M</span>  hello.rb
+<span class="green">M</span>  hello.py
 <b>$ git diff</b>
 <b>$ </b>
 <b>$ git diff --cached</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index d62ac43..8d15d50 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
    
@@ -251,15 +251,15 @@ index d62ac43..8d15d50 100644
       <small>查看已缓存的与未缓存的所有改动</small>
     </h4>
 
-    <p>如果您想一并查看已缓存的与未缓存的改动，可以执行 <code>git diff HEAD</code> ——也就是说您要看到的是工作目录与上一次提交的更新的区别，无视缓存。假设我们又改了些 <code>ruby.rb</code> 的内容，那缓存的与未缓存的改动我们就都有了。以上三个 <code>diff</code> 命令的结果如下：
+    <p>如果您想一并查看已缓存的与未缓存的改动，可以执行 <code>git diff HEAD</code> ——也就是说您要看到的是工作目录与上一次提交的更新的区别，无视缓存。假设我们又改了些 <code>ruby.py</code> 的内容，那缓存的与未缓存的改动我们就都有了。以上三个 <code>diff</code> 命令的结果如下：
     </p>
 <pre>
-<b>$ vim hello.rb </b>
+<b>$ vim hello.py </b>
 <b>$ git diff</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index 4f40006..2ae9ba4 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
    
@@ -270,10 +270,10 @@ index 4f40006..2ae9ba4 100644
  
  end
 <b>$ git diff --cached</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index 2aabb6e..4f40006 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
  
@@ -284,10 +284,10 @@ index 2aabb6e..4f40006 100644
  
  end
 <b>$ git diff HEAD</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index 2aabb6e..2ae9ba4 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,8 @@</span>
  class HelloWorld
  
@@ -310,15 +310,15 @@ index 2aabb6e..2ae9ba4 100644
     
 <pre>
 <b>$ git status -s</b>
-<span class="green">M</span><span class="red">M</span> hello.rb
+<span class="green">M</span><span class="red">M</span> hello.py
 <b>$ git diff --stat</b>
- hello.rb |    1 <span class="green">+</span>
+ hello.py |    1 <span class="green">+</span>
  1 files changed, 1 insertions(+), 0 deletions(-)
 <b>$ git diff --cached --stat</b>
- hello.rb |    2 <span class="green">+</span><span class="red">-</span>
+ hello.py |    2 <span class="green">+</span><span class="red">-</span>
  1 files changed, 1 insertions(+), 1 deletions(-)
 <b>$ git diff HEAD --stat</b>
- hello.rb |    3 <span class="green">++</span><span class="red">-</span>
+ hello.py |    3 <span class="green">++</span><span class="red">-</span>
  1 files changed, 2 insertions(+), 1 deletions(-)
 </pre>
 
@@ -354,13 +354,13 @@ index 2aabb6e..2ae9ba4 100644
 <b>$ git config --global user.email you@somedomain.com</b>
 </pre>
 
-	<p>让我们写入缓存，并提交对 <code>hello.rb</code> 的所有改动。在首个例子中，我们使用 <code>-m</code> 选项以在命令行中提供提交注释。
+	<p>让我们写入缓存，并提交对 <code>hello.py</code> 的所有改动。在首个例子中，我们使用 <code>-m</code> 选项以在命令行中提供提交注释。
     </p>
 
 <pre>
-<b>$ git add hello.rb </b>
+<b>$ git add hello.py </b>
 <b>$ git status -s</b>
-<span class="green">M</span>  hello.rb
+<span class="green">M</span>  hello.py
 <b>$ git commit -m 'my hola mundo changes'</b>
 [master 68aa034] my hola mundo changes
  1 files changed, 2 insertions(+), 1 deletions(-)
@@ -386,7 +386,7 @@ nothing to commit (working directory clean)
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
-# modified:   hello.rb
+# modified:   hello.py
 #
 ~
 ~
@@ -420,7 +420,7 @@ nothing to commit (working directory clean)
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
-# modified:   hello.rb
+# modified:   hello.py
 #
 ~
 ~
@@ -441,16 +441,16 @@ nothing to commit (working directory clean)
     </p>
 
 <pre>
-<b>$ vim hello.rb</b>
+<b>$ vim hello.py</b>
 <b>$ git status -s</b>
- <span class="red">M</span>  hello.rb
+ <span class="red">M</span>  hello.py
 <b>$ git commit -m 'changes to hello file'</b>
 # On branch master
 # Changed but not updated:
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
-# modified:   hello.rb
+# modified:   hello.py
 #
 <span class="hl">no changes added to commit (use "git add" and/or "git commit -a")</span>
 <b>$ git commit -am 'changes to hello file'</b>
@@ -495,21 +495,21 @@ nothing to commit (working directory clean)
 <pre>
 <b>$ git status -s</b>
  <span class="red">M</span> README
- <span class="red">M</span> hello.rb
+ <span class="red">M</span> hello.py
 <b>$ git add .</b>
 <b>$ git status -s</b>
 <span class="green">M</span>  README
-<span class="green">M</span>  hello.rb
-<b>$ git reset HEAD -- hello.rb </b>
+<span class="green">M</span>  hello.py
+<b>$ git reset HEAD -- hello.py </b>
 Unstaged changes after reset:
-M hello.rb
+M hello.py
 <b>$ git status -s</b>
 <span class="green">M</span>  README
- <span class="red">M</span> hello.rb
+ <span class="red">M</span> hello.py
 </pre>
 
 	<p>
-	现在您执行 <code>git commit</code> 将只记录 <code>README</code> 文件的改动，并不含现在并不在缓存中的 <code>hello.rb</code>。
+	现在您执行 <code>git commit</code> 将只记录 <code>README</code> 文件的改动，并不含现在并不在缓存中的 <code>hello.py</code>。
     </p>
 
     <p class="aside">
@@ -530,7 +530,7 @@ M hello.rb
 #   <span class="hl">(use "git reset HEAD <file>..." to unstage)</span>
 #
 #   <span class="green">modified:   README</span>
-#   <span class="green">modified:   hello.rb</span>
+#   <span class="green">modified:   hello.py</span>
 #
 </pre>
 

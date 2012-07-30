@@ -64,13 +64,13 @@ layout: reference
 <pre>
 <b>$ git status -s</b>
 <span class="red">??</span> README
-<span class="red">??</span> hello.rb
+<span class="red">??</span> hello.py
 </pre>
 
     So right now we have two untracked files.  We can now add them.
 
 <pre>
-<b>$ git add README hello.rb</b>
+<b>$ git add README hello.py</b>
 </pre>
     
     Now if we run <code>git status</code> again, we'll see that they've been
@@ -79,7 +79,7 @@ layout: reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">A</span>  README
-<span class="green">A</span>  hello.rb
+<span class="green">A</span>  hello.py
 </pre>
 
     <p class="aside">
@@ -88,7 +88,7 @@ layout: reference
     will recursively add all files under a directory you give it, if you give it
     the current working directory, it will simply start tracking every file 
     there.  In this case, a <code>git add .</code> would have done the same 
-    thing as a <code>git add README hello.rb</code>, or for that matter so would
+    thing as a <code>git add README hello.py</code>, or for that matter so would
     <code>git add *</code>, but that's only because we don't have subdirectories
     which the <code>*</code> would not recurse into.
     </p>
@@ -99,7 +99,7 @@ layout: reference
 <b>$ vim README</b>
 <b>$ git status -s</b>
 <span class="green">A</span><span class="red">M</span> README
-<span class="green">A</span>  hello.rb
+<span class="green">A</span>  hello.py
 </pre>
 
     <p>The 'AM' status means that the file has been modified on disk since we
@@ -150,7 +150,7 @@ layout: reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">A</span><span class="red">M</span> README
-<span class="green">A</span>  hello.rb
+<span class="green">A</span>  hello.py
 </pre>
 
     Where the same status with the long output looks like this:
@@ -165,7 +165,7 @@ layout: reference
 #   (use "git rm --cached <file>..." to unstage)
 #
 # <span class="green">new file:   README</span>
-# <span class="green">new file:   hello.rb</span>
+# <span class="green">new file:   hello.py</span>
 #
 # Changed but not updated:
 #   (use "git add <file>..." to update what will be committed)
@@ -186,7 +186,7 @@ layout: reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">M</span>  README
- <span class="red">D</span> hello.rb
+ <span class="red">D</span> hello.py
 </pre>
 
     You can see there are two columns in the short status output.  The first
@@ -198,7 +198,7 @@ layout: reference
 <pre>
 <b>$ git status -s</b>
 <span class="green">M</span><span class="red">M</span> README
- <span class="red">D</span> hello.rb
+ <span class="red">D</span> hello.py
 </pre>
 
     <p class="nutshell">
@@ -240,14 +240,14 @@ layout: reference
     </p>
 
 <pre>
-<b>$ vim hello.rb</b>
+<b>$ vim hello.py</b>
 <b>$ git status -s</b>
- <span class="red">M</span> hello.rb
+ <span class="red">M</span> hello.py
 <b>$ git diff</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index d62ac43..8d15d50 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
    
@@ -273,17 +273,17 @@ index d62ac43..8d15d50 100644
     <p>The <code>git diff --cached</code> command will show you what contents
     have been staged.  That is, this will show you the changes that will 
     currently go into the next commit snapshot.  So, if you were to stage
-    the change to <code>hello.rb</code> in the example above, 
+    the change to <code>hello.py</code> in the example above, 
     <code>git diff</code> by itself won't show you any output because it will
     only show you what is <i>not yet</i> staged.
     </p>
 
 <pre>
 <b>$ git status -s</b>
- <span class="red">M</span> hello.rb
-<b>$ git add hello.rb </b>
+ <span class="red">M</span> hello.py
+<b>$ git add hello.py </b>
 <b>$ git status -s</b>
-<span class="green">M</span>  hello.rb
+<span class="green">M</span>  hello.py
 <b>$ git diff</b>
 <b>$ </b>
 </pre>
@@ -293,14 +293,14 @@ index d62ac43..8d15d50 100644
 
 <pre>
 <b>$ git status -s</b>
-<span class="green">M</span>  hello.rb
+<span class="green">M</span>  hello.py
 <b>$ git diff</b>
 <b>$ </b>
 <b>$ git diff --cached</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index d62ac43..8d15d50 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
    
@@ -321,16 +321,16 @@ index d62ac43..8d15d50 100644
     can run <code>git diff HEAD</code> - this basically means you want to
     see the difference between your working directory and the last commit,
     ignoring the staging area. If we make another change to our 
-    <code>hello.rb</code> file then we'll have some changes staged and some
+    <code>hello.py</code> file then we'll have some changes staged and some
     changes unstaged.  Here are what all three <code>diff</code> commands
     will show you:</p>
 <pre>
-<b>$ vim hello.rb </b>
+<b>$ vim hello.py </b>
 <b>$ git diff</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index 4f40006..2ae9ba4 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
    
@@ -341,10 +341,10 @@ index 4f40006..2ae9ba4 100644
  
  end
 <b>$ git diff --cached</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index 2aabb6e..4f40006 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
  
@@ -355,10 +355,10 @@ index 2aabb6e..4f40006 100644
  
  end
 <b>$ git diff HEAD</b>
-<span class="umber">diff --git a/hello.rb b/hello.rb
+<span class="umber">diff --git a/hello.py b/hello.py
 index 2aabb6e..2ae9ba4 100644
---- a/hello.rb
-+++ b/hello.rb</span>
+--- a/hello.py
++++ b/hello.py</span>
 <span class="lblue">@@ -1,7 +1,8 @@</span>
  class HelloWorld
  
@@ -384,15 +384,15 @@ index 2aabb6e..2ae9ba4 100644
     
 <pre>
 <b>$ git status -s</b>
-<span class="green">M</span><span class="red">M</span> hello.rb
+<span class="green">M</span><span class="red">M</span> hello.py
 <b>$ git diff --stat</b>
- hello.rb |    1 <span class="green">+</span>
+ hello.py |    1 <span class="green">+</span>
  1 files changed, 1 insertions(+), 0 deletions(-)
 <b>$ git diff --cached --stat</b>
- hello.rb |    2 <span class="green">+</span><span class="red">-</span>
+ hello.py |    2 <span class="green">+</span><span class="red">-</span>
  1 files changed, 1 insertions(+), 1 deletions(-)
 <b>$ git diff HEAD --stat</b>
- hello.rb |    3 <span class="green">++</span><span class="red">-</span>
+ hello.py |    3 <span class="green">++</span><span class="red">-</span>
  1 files changed, 2 insertions(+), 1 deletions(-)
 </pre>
 
@@ -438,14 +438,14 @@ index 2aabb6e..2ae9ba4 100644
 </pre>
 
     <p>Let's stage and commit all the changes to our
-    <code>hello.rb</code> file.  In this first example, we'll use the 
+    <code>hello.py</code> file.  In this first example, we'll use the 
     <code>-m</code> option to provide the commit message on the command line.
     </p>
 
 <pre>
-<b>$ git add hello.rb </b>
+<b>$ git add hello.py </b>
 <b>$ git status -s</b>
-<span class="green">M</span>  hello.rb
+<span class="green">M</span>  hello.py
 <b>$ git commit -m 'my hola mundo changes'</b>
 [master 68aa034] my hola mundo changes
  1 files changed, 2 insertions(+), 1 deletions(-)
@@ -476,7 +476,7 @@ nothing to commit (working directory clean)
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
-# modified:   hello.rb
+# modified:   hello.py
 #
 ~
 ~
@@ -516,7 +516,7 @@ Further paragraphs come after blank lines.
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
-# modified:   hello.rb
+# modified:   hello.py
 #
 ~
 ~
@@ -552,16 +552,16 @@ Further paragraphs come after blank lines.
     </p>
 
 <pre>
-<b>$ vim hello.rb</b>
+<b>$ vim hello.py</b>
 <b>$ git status -s</b>
- <span class="red">M</span>  hello.rb
+ <span class="red">M</span>  hello.py
 <b>$ git commit -m 'changes to hello file'</b>
 # On branch master
 # Changed but not updated:
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
-# modified:   hello.rb
+# modified:   hello.py
 #
 <span class="hl">no changes added to commit (use "git add" and/or "git commit -a")</span>
 <b>$ git commit -am 'changes to hello file'</b>
@@ -631,22 +631,22 @@ Further paragraphs come after blank lines.
 <pre>
 <b>$ git status -s</b>
  <span class="red">M</span> README
- <span class="red">M</span> hello.rb
+ <span class="red">M</span> hello.py
 <b>$ git add .</b>
 <b>$ git status -s</b>
 <span class="green">M</span>  README
-<span class="green">M</span>  hello.rb
-<b>$ git reset HEAD -- hello.rb </b>
+<span class="green">M</span>  hello.py
+<b>$ git reset HEAD -- hello.py </b>
 Unstaged changes after reset:
-M hello.rb
+M hello.py
 <b>$ git status -s</b>
 <span class="green">M</span>  README
- <span class="red">M</span> hello.rb
+ <span class="red">M</span> hello.py
 </pre>
 
     <p>Now you can run a <code>git commit</code> which will just record
     the changes to the <code>README</code> file, not the now unstaged
-    <code>hello.rb</code>.
+    <code>hello.py</code>.
     </p>
 
     <p class="aside">
@@ -678,7 +678,7 @@ M hello.rb
 #   <span class="hl">(use "git reset HEAD <file>..." to unstage)</span>
 #
 #   <span class="green">modified:   README</span>
-#   <span class="green">modified:   hello.rb</span>
+#   <span class="green">modified:   hello.py</span>
 #
 </pre>
 

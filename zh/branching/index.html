@@ -80,7 +80,7 @@ $ git branch
 
 <pre>
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 <b>$ echo 'test content' > test.txt</b>
 <b>$ echo 'more content' > more.txt</b>
 <b>$ git add *.txt</b>
@@ -90,11 +90,11 @@ README   hello.rb
  create mode 100644 more.txt
  create mode 100644 test.txt
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 <b>$ git checkout testing</b>
 Switched to branch 'testing'
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 </pre>
 
     <p>当我们切换到“测试”分支的时候，我们添加的新文件被移除了。切换回“master”分支的时候，它们有重新出现了。
@@ -102,11 +102,11 @@ README   hello.rb
 
 <pre>
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 <b>$ git checkout master</b>
 Switched to branch 'master'
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 </pre>
 
     <h4>
@@ -122,7 +122,7 @@ README   hello.rb more.txt test.txt
 <b>$ git branch</b>
 * master
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 <b>$ git checkout -b removals</b>
 Switched to a new branch 'removals'
 <b>$ git rm more.txt </b>
@@ -130,7 +130,7 @@ rm 'more.txt'
 <b>$ git rm test.txt </b>
 rm 'test.txt'
 <b>$ ls</b>
-README   hello.rb
+README   hello.py
 <b>$ git commit -am 'removed useless files'</b>
 [removals 8f7c949] removed useless files
  2 files changed, 0 insertions(+), 2 deletions(-)
@@ -139,7 +139,7 @@ README   hello.rb
 <b>$ git checkout master</b>
 Switched to branch 'master'
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 </pre>
 
 	<p>如您所见，我们创建了一个分支，在该分支的上下文中移除了一些文件，然后切换回我们的主分支，那些文件又回来了。使用分支将工作切分开来，从而让我们能够在不同上下文中做事，并来回切换。
@@ -192,7 +192,7 @@ Deleted branch testing (was 78b2670).
 * <span class="green">master</span>
   removals
 <b>$ ls</b>
-README   hello.rb more.txt test.txt
+README   hello.py more.txt test.txt
 <b>$ git merge removals</b>
 Updating 8bd6d8b..8f7c949
 Fast-forward
@@ -202,7 +202,7 @@ Fast-forward
  delete mode 100644 more.txt
  delete mode 100644 test.txt
 <b>$ ls</b>
-<span class="hl">README   hello.rb</span>
+<span class="hl">README   hello.py</span>
 </pre>
 
     <h4>
@@ -215,7 +215,7 @@ Fast-forward
 <pre>
 <b>$ git branch</b>
 * master
-<b>$ cat hello.rb </b>
+<b>$ cat hello.py </b>
 class HelloWorld
   def self.hello
     puts "Hello World"
@@ -230,28 +230,28 @@ HelloWorld.hello
 
 <pre>
 <b>$ git checkout -b change_class</b>
-M hello.rb
+M hello.py
 Switched to a new branch 'change_class'
-<b>$ vim hello.rb </b>
-<b>$ head -1 hello.rb </b>
+<b>$ vim hello.py </b>
+<b>$ head -1 hello.py </b>
 class HiWorld
 <b>$ git commit -am 'changed the class name'</b>
 [change_class 3467b0a] changed the class name
  1 files changed, 2 insertions(+), 4 deletions(-)
 </pre>
 
-	<p>然后，将重命名类操作提交到 “change_class” 分支中。现在，假如切换回 “master” 分支我们可以看到类名恢复到了我们切换到 “change_class” 分支之前的样子。现在，再做些修改（即代码中的输出），同时将文件名从 <code>hello.rb</code> 改为 <code>ruby.rb</code>。
+	<p>然后，将重命名类操作提交到 “change_class” 分支中。现在，假如切换回 “master” 分支我们可以看到类名恢复到了我们切换到 “change_class” 分支之前的样子。现在，再做些修改（即代码中的输出），同时将文件名从 <code>hello.py</code> 改为 <code>ruby.py</code>。
 
 <pre>
 <b>$ git checkout master</b>
 Switched to branch 'master'
-<b>$ git mv hello.rb ruby.rb</b>
-<b>$ vim ruby.rb </b>
+<b>$ git mv hello.py ruby.py</b>
+<b>$ vim ruby.py </b>
 <b>$ git diff</b>
-<span class="umber">diff --git a/ruby.rb b/ruby.rb
+<span class="umber">diff --git a/ruby.py b/ruby.py
 index 2aabb6e..bf64b17 100644
---- a/ruby.rb
-+++ b/ruby.rb</span>
+--- a/ruby.py
++++ b/ruby.py</span>
 <span class="lblue">@@ -1,7 +1,7 @@</span>
  class HelloWorld
 
@@ -264,7 +264,7 @@ index 2aabb6e..bf64b17 100644
 <b>$ git commit -am 'added from ruby'</b>
 [master b7ae93b] added from ruby
  1 files changed, 1 insertions(+), 1 deletions(-)
- rename hello.rb => ruby.rb (65%)
+ rename hello.py => ruby.py (65%)
 </pre>
 
 	<p>现在这些改变已经记录到我的 “master” 分支了。请注意，这里类名还是 “HelloWorld”，而不是 “HiWorld”。然后我想将类名的改变合并过来，我把 “change_class” 分支合并过来就行了。但是，我已经将文件名都改掉了，Git 知道该怎么办么？
@@ -275,12 +275,12 @@ index 2aabb6e..bf64b17 100644
   change_class
 * master
 <b>$ git merge change_class</b>
-Renaming hello.rb => ruby.rb
-Auto-merging ruby.rb
+Renaming hello.py => ruby.py
+Auto-merging ruby.py
 Merge made by recursive.
- ruby.rb |    6 ++----
+ ruby.py |    6 ++----
  1 files changed, 2 insertions(+), 4 deletions(-)
-<b>$ cat ruby.rb</b>
+<b>$ cat ruby.py</b>
 class HiWorld
   def self.hello
     puts "Hello World from Ruby"
@@ -510,8 +510,8 @@ Switched to a new branch 'erlang'
 <b>$ git checkout master</b>
 Switched to branch 'master'
 <b>$ ls</b>
-README  ruby.rb
-<b>$ vim ruby.rb </b>
+README  ruby.py
+<b>$ vim ruby.py </b>
 <b>$ git commit -am 'reverted to old class name'</b>
 [master 594f90b] reverted to old class name
  1 files changed, 2 insertions(+), 2 deletions(-)
