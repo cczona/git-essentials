@@ -10,26 +10,20 @@ layout: reference
     Basic Snapshotting
   </h2>
   <div class="block">
-    <p>
-    Git is all about composing and saving snapshots of your project and then
-    working with and comparing those snapshots.  This section will explain
-    the commands needed to compose and commit snapshots of your project.
-    </p>
 
     <p>
-    An important concept here is that Git has an 'index', which acts as sort
-    of a staging area for your snapshot.  This allows you to build up a series
+    Git has an 'staging area' (a.k.a 'cache' or 'index').  This allows you to build up a series
     of well composed snapshots from changed files in your working directory, 
     rather than having to commit all of the file changes at once.
     </p>
 
     <p class="nutshell">
-    <strong>In a nutshell</strong>, you will use <code>git add</code> to start tracking new
-    files and also to stage changes to already tracked files, then 
+    <strong>(1) Use <code>git add</code> to start tracking new
+    files and also to stage changes to already tracked files. (2) Use
     <code>git status</code> and <code>git diff</code> to see what has been
-    modified and staged and finally <code>git commit</code> to record your
-    snapshot into your history.  This will be the basic workflow that you use
-    most of the time.
+    modified and staged.  (3) Use <code>git commit</code> to record your
+    snapshot into your history.  This '3-stage workflow' is what you use
+    most of the time.</strong>
     </p>
 
   </div>
@@ -47,24 +41,20 @@ layout: reference
 
   <div class="block">
     <p>
-    In Git, you have to add file contents to your staging area before you 
+    You have to add file contents to the staging area before you 
     can commit them.  If the file is new, you can run <code>git add</code>
     to initially add the file to your staging area, but even if the file
     is already "tracked" - ie, it was in your last commit - you still need
     to call <code>git add</code> to add new modifications to your staging
-    area. Let's see a few examples of this.
+    area.
     </p>
 
-    <p>Going back to our Hello World example, once we've initiated the project,
-    we would now start adding our files to it and we would do that with 
-    <code>git add</code>.  We can use <code>git status</code> to see what the
+    <p>We can use <code>git status</code> to see what the
     state of our project is.
     </p>
 
 <pre>
-<b>$ git status -s</b>
-<span class="red">??</span> README
-<span class="red">??</span> hello.py
+<b>$ git status</b>
 </pre>
 
     So right now we have two untracked files.  We can now add them.
