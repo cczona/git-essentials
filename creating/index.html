@@ -8,14 +8,10 @@ layout: reference
     <p>
     In order to do anything in Git, you have to have a Git repository.  This
     is where Git stores the data for the snapshots you are saving.
-    </p>
-
-    <p>
-    There are two main ways to get a Git repository.  One way is to simply
-    initialize a new one from an existing directory, such as a new project or
-    a project new to source control.  The second way is to clone one from a
-    public Git repository, as you would do if you wanted a copy or wanted to
-    work with someone on a project.
+    There are two main ways to get a Git repository:
+    
+    1. Initialize a new repository
+    2. Clone from an existing repository
     </p>
   </div>
 </div>
@@ -31,42 +27,25 @@ layout: reference
   </h2>
 
   <div class="block">
-    To create a repository from an existing directory of files, you can
-    simply run <code>git init</code> in that directory.  For example,
-    let's say we have a directory with a few files in it, like this:
+    To create a repository from an existing directory of files, run <code>git init</code> in that directory.
 
 <pre>
-<b>$ cd pyladies</b>
+<b>$ mkdir ~/pyladies</b>
+<b>$ cd ~/pyladies</b>
 <b>$ ls</b>
-README   hello.py
-</pre>
 
-    This is a project where we are writing examples of the "Hello World"
-    program in every language.  So far, we just have Ruby, but hey, it's
-    a start.  To start version controlling this with Git, we can simply
-    run <code>git init</code>.
-
-<pre>
+<b>$ touch README</b>
+<b>$ touch hello.py</b>
+<b>$ ls -a</b>
+.        ..       README   hello.py
 <b>$ git init</b>
-Initialized empty Git repository in /opt/pyladies/.git/
-</pre>
-
-    Now you can see that there is a <code>.git</code> subdirectory in your
-    project.  This is your Git repository where all the data of your
-    project snapshots are stored.
-
-<pre>
+Initialized empty Git repository in ~/pyladies/.git/
 <b>$ ls -a</b>
 .        ..       .git     README   hello.py
 </pre>
 
     Congratulations, you now have a skeleton Git repository and can start
     snapshotting your project.
-
-    <p class="nutshell">
-    <strong>In a nutshell</strong>, you use <code>git init</code> to make an
-    existing directory of content into a new Git repository.  You can do this
-    in any directory at any time, completely locally.</p>
 
   </div>
 </div>
@@ -83,53 +62,27 @@ Initialized empty Git repository in /opt/pyladies/.git/
   <div class="block">
     <p>
     If you need to collaborate with someone on a project, or if you want to
-    get a copy of a project so you can look at or use the code, you will
-    clone it.  You simply run the <code>git clone [url]</code> command with 
+    get a copy of a project so you can look at or use the code,
+    clone it.  Run <code>git clone [url]</code> with 
     the URL of the project you want to copy.
     </p>
 
 <pre>
-<b>$ git clone git://github.com/schacon/simplegit.git</b>
-Initialized empty Git repository in /private/tmp/simplegit/.git/
-remote: Counting objects: 100, done.
-remote: Compressing objects: 100% (86/86), done.
-remote: Total 100 (delta 35), reused 0 (delta 0)
-Receiving objects: 100% (100/100), 9.51 KiB, done.
-Resolving deltas: 100% (35/35), done.
-<b>$ cd simplegit/</b>
-<b>$ ls</b>
-README   Rakefile <span class="blue">lib</span>
-</pre>
-
-    <p>
-    This will copy the entire history of that project so you have it locally
-    and it will give you a working directory of the main branch of that project
-    so you can look at the code or start editing it.  If you change into the
-    new directory, you can see the <code>.git</code> subdirectory - that is
-    where all the project data is.
-    </p>
-
-<pre>
+<b>$ mkdir ~/git-repo-clone</b>
+<b>$ cd ~/git-repo-clone</b>
+<b>$ git clone git://github.com/cczona/git-essentials.git</b>
+Cloning into 'git-essentials'...
+remote: Counting objects: 301, done.
+remote: Compressing objects: 100% (130/130), done.
+remote: Total 301 (delta 131), reused 266 (delta 103)
+Receiving objects: 100% (301/301), 178.53 KiB | 339 KiB/s, done.
+Resolving deltas: 100% (131/131), done.
+<b>$ cd git-essentials</b>
 <b>$ ls -a</b>
-.        ..       <span class="blue">.git</span>     README   Rakefile <span class="blue">lib</span>
-<b>$ cd .git</b>
-<b>$ ls</b>
-HEAD        description <span class="blue">info</span>        packed-refs
-<span class="blue">branches    hooks       logs        refs</span>
-config      index       <span class="blue">objects</span>
-</pre>
-
-    <p>
-    By default, Git will create a directory that is the same name as the 
-    project in the URL you give it - basically whatever is after the last slash
-    of the URL.  If you want something different, you can just put it at the
-    end of the command, after the URL.
-    </p>
-
-    <p class="nutshell">
-    <strong>In a nutshell</strong>, you use <code>git clone</code> to get a 
-    local copy of a Git repository so you can look at it or start modifying
-    it.</p>
+./             CNAME          about.html     creating/      inspect/
+../            NOTES          basic/         css/           js/
+.git/          README.md      branching/     images/        remotes/
+.gitignore     _layouts/      cookbook.html  index.html</pre>
 
   </div>
 </div>
